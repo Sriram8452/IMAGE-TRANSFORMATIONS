@@ -65,30 +65,20 @@ plt.show()
 #### (ii) Image Scaling
 
 ```
-# Load an image from URL or file path
-image_url = 'SPB.jpeg'  # Replace with your image URL or file path
-image = cv2.imread(image_url)
 
-
-# Define scale factors
-scale_x = 1.5  # Scaling factor along x-axis
-scale_y = 1.5  # Scaling factor along y-axis
-
-
-# Apply scaling to the image
-scaled_image = cv2.resize(image, None, fx=scale_x, fy=scale_y, interpolation=cv2.INTER_LINEAR)
-
-# Display original and scaled images
-print("Original Image:")
-plt.figure(figsize=(6, 6))
-plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-plt.axis('off')
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+org_image = cv2.imread("SPB.jpeg")
+org_image = cv2.cvtColor(org_image,cv2.COLOR_BGR2RGB)
+plt.imshow(org_image)
 plt.show()
-print("Scaled Image:")
-plt.figure(figsize=(6, 6))
-plt.imshow(cv2.cvtColor(scaled_image, cv2.COLOR_BGR2RGB))
-plt.axis('off')
+rows,cols,dim = org_image.shape
+M = np.float32([[1.5,0,0],[0,1.7,0],[0,0,1]])
+scaled_img = cv2.warpPerspective(org_image,M,(cols*2,rows*2))
+plt.imshow(org_image)
 plt.show()
+
 
 ```
 
@@ -240,7 +230,8 @@ plt.show()
 
 
 ### ii) Image Scaling
-![image](https://github.com/user-attachments/assets/c0c438d9-8d07-4212-bdf9-f3f2f1982cc3)
+![WhatsApp Image 2024-11-18 at 21 16 05_9bcabe49](https://github.com/user-attachments/assets/576af8fa-f841-4d35-94f8-7ad3b59f47bf)
+
 
 
 
